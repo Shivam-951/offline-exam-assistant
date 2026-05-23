@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Exam Assistant</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo-line">
+                <div class="logo-icon"></div>
+                <h1>Exam<span>Assist</span></h1>
+            </div>
+            <p class="subtitle">Offline AI * JEE & NEET * No Internet Required</p>
+            <div class="badges">
+                <span class="badge active">● OFFLINE</span>
+                <span class="badge">256 VERIFIED Q&A</span>
+                <span class="badge">LLAMA 3.2</span>
+                <span class="badge">NEET 2025 * JEE 2023</span>
+            </div>
+        </header>
+
+        <!-- Upload -->
+         <div class="upload-section">
+            <div class="upload-zone" id="uploadZone">
+                <span class="upload-icon">📷</span>
+                <h3>Drop your question image here</h3>
+                <p>or click to browse * PNG, JPG supported</p>
+            </div>
+            <input type="file" id="fileInput" accept="image/*">
+
+            <div class="preview-box" id="previewBox">
+                <div class="preview-header">
+                    <span>UPLOADED IMAGE</span>
+                    <span id="fileName"></span>
+                </div>
+                <img id="previewImg" src="" alt="preview">
+            </div>
+         </div>
+
+        <!-- Solve Button -->
+        <button class="solve-btn" id="solveBtn" disabled>
+            <span>🔍</span>
+            <span>Solve Question</span>
+        </button>
+
+        <!-- Loading -->
+         <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <div class="loading-text">Processing your questions</div>
+            <div class="loading-step" id="loadingStep">Extracting text from image...</div>
+         </div>
+
+         <!-- Error -->
+
+         <div class="error-box" id="errorBox"></div>
+
+         <!-- Results -->
+          <div class="result-section" id="resultSection">
+
+            <div id="methodBadge"></div>
+
+            <!-- Extracted Question -->
+             <div class="card">
+                <div class="card-header">
+                    <span class="icon">📋</span>
+                    Extracted Question
+                </div>
+                <div class="card-body" id="questionText"></div>
+             </div>
+
+             <!-- Answer -->
+             <div class="card">
+                <div class="card-header">
+                    <span class="icon">✅</span>
+                    ANSWER & EXPLANATION
+                </div>
+                <div class="card-body">
+                    <div class="answer-highlight" id="answerHighlight" style="display: none;">
+                        <div class="option-num" id="optionNum">—</div>
+                        <div class="option-label">CORRECT ANSWER</div>
+                    </div>
+                    <div id="explanationText"></div>
+                </div>
+                <div class="source-info">
+                    <span id="sourceText"></span>
+                    <span id="similarityText"></span>
+                </div>
+             </div>
+             <button class="reset-btn" onclick="resetUI()">↩ Solve Another Question</button>
+          </div>
+    </div>
+
+    <script src= "{{url_for('static', filename='script.js')}}"> </script>
+</body>
+</html>
